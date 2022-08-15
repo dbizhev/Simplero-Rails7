@@ -1,0 +1,13 @@
+<header class="shadow-sm">
+  <div class="max-w-screen-xl p-4 mx-auto">
+    <div class="flex items-center justify-between space-x-4 lg:space-x-10">
+      <div class="flex lg:w-0 lg:flex-1">
+        Community Platform
+      </div>
+      <div class="items-center justify-end flex-1 hidden space-x-4 sm:flex">
+        <a class="<%= @active_link == Header::LINK_GROUP ? "text-gray-800" : "text-gray-500" %>" href="<%= root_path %>">Groups</a>
+        <%= button_to "Logout", destroy_user_session_path, class: "px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg", method: :delete, form: { data: { turbo_confirm: 'Are you sure?', turbo: false } } %>
+      </div>
+    </div>
+  </div>
+</header>
