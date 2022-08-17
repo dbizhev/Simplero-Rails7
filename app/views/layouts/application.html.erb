@@ -11,6 +11,9 @@
 </head>
 <body>
 <%= render(HeaderComponent.new(active_link: get_header_active_link)) %>
-<%= yield %>
+<div class="container mx-auto mt-4">
+  <%= yield %>
+</div>
+<%= yield :modal %>
 </body>
 </html>

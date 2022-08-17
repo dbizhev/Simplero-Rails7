@@ -1,0 +1,5 @@
+<%= turbo_stream.update "groups_form_model" do %>
+  <%= render Groups::FormModalComponent.new(title: "Create Group") do %>
+    <%= render Groups::FormComponent.new(group: @group) %>
+  <% end %>
+<% end %>
