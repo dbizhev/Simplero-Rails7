@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     if @group.save
       render turbo_stream: turbo_stream.update('groups_form_model', '')
     else
-      render turbo_stream: turbo_stream.update(@group, render_to_string(Groups::FormComponent.new(group: @group)))
+      render turbo_stream: turbo_stream.replace(@group, render_to_string(Groups::FormComponent.new(group: @group)))
     end
   end
 
