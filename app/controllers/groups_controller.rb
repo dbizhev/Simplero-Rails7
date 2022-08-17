@@ -12,7 +12,10 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
 
     if @group.save
-      render turbo_stream: turbo_stream.update('groups_form_model', '')
+      render turbo_stream: [
+        turbo_stream.update('turbo_messages', render_to_string(Shared::TurboMessageComponent.new(notice: "Group created successfully"))),
+        turbo_stream.update('groups_form_model', '')
+      ]
     else
       render turbo_stream: turbo_stream.replace(@group, render_to_string(Groups::FormComponent.new(group: @group)))
     end
