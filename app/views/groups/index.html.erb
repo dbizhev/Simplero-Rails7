@@ -6,3 +6,9 @@
   <div></div>
   <%= link_to "Create a new group", new_groups_path, data: { controller: "turbo-request", action: "click->turbo-request#click" }, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5" %>
 </div>
+<div class="groups-list-search-container mt-2 mb-2">
+  <%= render Groups::ListSearchComponent.new %>
+</div>
+<div class="groups-list-items-container mt-2 mb-2">
+  <%= turbo_frame_tag "groups_list_items" %>
+</div>

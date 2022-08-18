@@ -8,5 +8,9 @@ Rails.application.routes.draw do
              }
 
   root 'groups#index'
-  resource :groups, only: [:index, :new, :create]
+  resource :groups, only: [:index, :new, :create] do
+    collection do
+      post :search
+    end
+  end
 end

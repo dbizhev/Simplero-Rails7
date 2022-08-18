@@ -21,6 +21,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  def search
+    @groups = params[:type] == "all" ? Group.all : current_user.groups
+    @groups = @groups.order(updated_at: :desc)
+  end
+
   private
 
   def active_link
