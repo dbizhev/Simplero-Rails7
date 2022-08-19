@@ -10,5 +10,6 @@
   <%= render Groups::ListSearchComponent.new %>
 </div>
 <div class="groups-list-items-container mt-2 mb-2">
+  <%= turbo_stream_from "groups_list_items_body" %>
   <%= turbo_frame_tag "groups_list_items" %>
 </div>

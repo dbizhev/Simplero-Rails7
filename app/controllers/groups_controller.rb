@@ -12,6 +12,8 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
 
     if @group.save
+      Turbo::StreamsChannel.broadcast_prepend_to "groups_list_items_body", html: render_to_string(Groups::ListItemComponent.new(group: @group)), target: "groups_list_items_body"
+
       render turbo_stream: [
         turbo_stream.update('turbo_messages', render_to_string(Shared::TurboMessageComponent.new(notice: "Group created successfully"))),
         turbo_stream.update('groups_form_model', '')
