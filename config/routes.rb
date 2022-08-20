@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resource :groups, only: [:index, :new, :create] do
     collection do
       post :search
+      post :join
     end
   end
 end

@@ -1,7 +1,7 @@
 module Groups
   class Access
-    OPEN = :open
-    PRIVATE = :private
+    OPEN = 'OPEN'
+    PRIVATE = 'PRIVATE'
 
     VALID_ACCESSES = [
       OPEN,

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :active_link
+  before_action :set_group, only: :join
 
   def index
   end
@@ -25,7 +26,16 @@ class GroupsController < ApplicationController
 
   def search
     @groups = params[:type] == "all" ? Group.all : current_user.groups
+    @groups = @groups.includes(:owner, :members)
     @groups = @groups.order(updated_at: :desc)
+  end
+
+  def join
+    if @group.owner.id != current_user.id
+      @member = @group.members.find_or_initialize_by(user_id: current_user.id)
+      @member.status = Members::Status::PENDING if @member.new_record?
+      @member.save!
+    end
   end
 
   private
@@ -38,5 +48,9 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:id, :name, :access)
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 end

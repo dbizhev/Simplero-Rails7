@@ -1,10 +1,12 @@
 <%= turbo_frame_tag @group do %>
   <div class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <div class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <div class="flex justify-between py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
       <%= @group&.name %>
+      <% if show_join_request? %>
+        <%= button_to join_request_text, join_groups_path(id: @group.id), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+      <% else %>
+        <span><%= join_request_status %></span>
+      <% end %>
     </div>
-    <!--<td class="py-4 px-6 text-right">
-      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-    </td>-->
   </div>
 <% end %>

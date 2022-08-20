@@ -1,8 +1,8 @@
 module Members
   class Status
-    PENDING = :pending
-    ACCEPTED = :accepted
-    REJECTED = :rejected
+    PENDING = 'PENDING'
+    ACCEPTED = 'ACCEPTED'
+    REJECTED = 'REJECTED'
 
     VALID_STATUSES = [
       PENDING,
