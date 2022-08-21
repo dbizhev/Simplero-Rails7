@@ -3,7 +3,7 @@
     <div class="flex justify-between py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
       <%= @group&.name %>
       <% if show_join_request? %>
-        <%= button_to join_request_text, join_groups_path(id: @group.id), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+        <%= button_to join_request_text, join_group_path(id: @group.id), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
       <% else %>
         <span><%= join_request_status %></span>
       <% end %>

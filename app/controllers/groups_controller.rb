@@ -44,8 +44,6 @@ class GroupsController < ApplicationController
     set_header_active_link(Header::LINK_GROUP)
   end
 
-  private
-
   def group_params
     params.require(:group).permit(:id, :name, :access)
   end
