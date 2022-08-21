@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
   def join
     if @group.owner.id != current_user.id
       @member = @group.members.find_or_initialize_by(user_id: current_user.id)
-      @member.status = Members::Status::PENDING if @member.new_record?
+      @member.status = @group.access == Groups::Access::PRIVATE ? Members::Status::PENDING : Members::Status::ACCEPTED if @member.new_record?
       @member.save!
     end
   end
