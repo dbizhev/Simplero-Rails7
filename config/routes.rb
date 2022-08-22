@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
     member do
       post :join
+      post :remove_member
     end
+    resources :posts
   end
 end

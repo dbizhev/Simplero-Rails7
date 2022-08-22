@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "joined_members_container" do %>
+  <div>
+    <a onclick="return false;" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 dark:hover:bg-blue-300">Members</a>
+    <div class="mt-2 mb-2">
+      <%= turbo_stream_from "joined_members_stream" %>
+      <%= turbo_frame_tag "joined_members" do %>
+        <% @members.each do |member| %>
+          <%= render Posts::MemeberListItemComponent.new(group: @group, member: member) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

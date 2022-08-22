@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :active_link
-  before_action :set_group, only: :join
+  before_action :set_group, only: [:join, :remove_member]
 
   def index
   end
@@ -35,6 +35,15 @@ class GroupsController < ApplicationController
       @member = @group.members.find_or_initialize_by(user_id: current_user.id)
       @member.status = @group.access == Groups::Access::PRIVATE ? Members::Status::PENDING : Members::Status::ACCEPTED if @member.new_record?
       @member.save!
+    end
+  end
+
+  def remove_member
+    if @group.owner_is?(user: current_user)
+      @member = @group.members.find_by(id: params[:member_id])
+      @member.destroy
+      RemoveMemberStreamJob.perform_later("joined_group_#{@group.id}_member_#{@member.id}")
+      render turbo_stream: turbo_stream.remove("joined_group_#{@group.id}_member_#{@member.id}")
     end
   end
 

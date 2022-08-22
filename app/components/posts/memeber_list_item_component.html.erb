@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "joined_group_#{@group.id}_member_#{@member.id}" do %>
+  <div class="flex justify-between">
+    <span><%= @member&.user&.name %></span>
+    <% if show_member_remove_btn? %>
+      <%= button_to "Remove", remove_member_group_path(@group, member_id: @member), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+    <% end %>
+  </div>
+<% end %>

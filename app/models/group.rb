@@ -17,4 +17,10 @@ class Group < ApplicationRecord
 
     members.where(user_id: user.id).first
   end
+
+  def owner_is?(user: nil)
+    return false if user.nil?
+
+    owner.id == user.id
+  end
 end
