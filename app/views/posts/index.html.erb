@@ -2,4 +2,7 @@
   <div class="max overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
     <%= render Posts::MemeberListComponent.new(group: @group, members: @members) %>
   </div>
+  <div class="mt-4 max overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+    <%= render Posts::PendingListComponent.new(group: @group, members: @pending_members) %>
+  </div>
 </aside>

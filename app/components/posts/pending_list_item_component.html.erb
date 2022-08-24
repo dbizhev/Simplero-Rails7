@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "pending_group_#{@group.id}_member_#{@member.id}" do %>
+  <div class="flex justify-between">
+    <span><%= @member&.user&.name %></span>
+    <div>
+      <%= button_to "Accept", respond_join_request_group_path(@group, member_id: @member), params: { status: Members::Status::ACCEPTED }, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+      <%= button_to "Reject", respond_join_request_group_path(@group, member_id: @member), params: { status: Members::Status::REJECTED }, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+    </div>
+  </div>
+<% end %>

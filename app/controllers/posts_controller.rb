@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_group, only: :index
 
   def index
-    @members = @group.members.includes(:user)
+    @members = @group.members.includes(:user).where(status: Members::Status::ACCEPTED)
+    @pending_members = @group.members.includes(:user).where(status: Members::Status::PENDING)
   end
 
   private
