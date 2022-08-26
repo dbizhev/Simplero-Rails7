@@ -13,6 +13,9 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
 
     if @group.save
+      @member = @group.members.find_or_initialize_by(user_id: current_user.id)
+      @member.status = Members::Status::OWNER
+      @member.save
       Turbo::StreamsChannel.broadcast_prepend_to "groups_list_items_body", html: render_to_string(Groups::ListItemComponent.new(group: @group)), target: "groups_list_items_body"
 
       render turbo_stream: [

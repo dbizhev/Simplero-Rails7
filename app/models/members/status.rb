@@ -3,11 +3,13 @@ module Members
     PENDING = 'PENDING'
     ACCEPTED = 'ACCEPTED'
     REJECTED = 'REJECTED'
+    OWNER = 'OWNER'
 
     VALID_STATUSES = [
       PENDING,
       ACCEPTED,
-      REJECTED
+      REJECTED,
+      OWNER
     ].freeze
   end
 end

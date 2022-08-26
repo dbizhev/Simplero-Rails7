@@ -1,0 +1,10 @@
+<%= turbo_stream_from "group_#{@group.id}_posts_stream" %>
+<div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+  <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <%= turbo_frame_tag "group_#{@group.id}_posts" do %>
+      <% @posts.each do |post| %>
+        <%= render Posts::ListItemComponent.new(group: @group, post: post) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
