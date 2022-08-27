@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "group_#{@comment.post.group.id}_post_#{@comment.post.id}_comment_#{@comment.id}" do %>
+  <div class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 p-2">
+    <div class="flex justify-between py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      <div>
+        <p class="font-normal text-gray-700 dark:text-gray-400"><%= @comment.content %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
