@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "group_#{@post.group.id}_post_form" do %>
-  <%= form_with(model: @post, url: group_posts_path(@post.group.id)) do |form| %>
+  <%= form_with(model: [@post.group, @post], class: "p-2") do |form| %>
     <div class="mb-2">
       <%= render Shared::ModelErrorComponent.new(object: @post) %>
     </div>
@@ -12,7 +12,7 @@
       <%= form.text_field :content, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
     </div>
     <div class="mt-4">
-      <%= form.submit "Post", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" %>
+      <%= form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" %>
     </div>
   <% end %>
 <% end %>
