@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Comments::ListItemComponent < ViewComponent::Base
-  include Turbo::FramesHelper
+class Comments::ListItemComponent < ApplicationComponent
 
   def initialize(comment:)
     @comment = comment

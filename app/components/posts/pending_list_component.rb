@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::PendingListComponent < ViewComponent::Base
-  include Turbo::FramesHelper, Turbo::StreamsHelper
+class Posts::PendingListComponent < ApplicationComponent
 
   def initialize(group:, members:)
     @group = group

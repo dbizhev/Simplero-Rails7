@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::FormComponent < ViewComponent::Base
-  include Turbo::FramesHelper
+class Posts::FormComponent < ApplicationComponent
 
   def initialize(post:)
     @post = post

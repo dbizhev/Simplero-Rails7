@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Comments::ListComponent < ViewComponent::Base
-  include Turbo::FramesHelper, Turbo::StreamsHelper
+class Comments::ListComponent < ApplicationComponent
 
   def initialize(group:, post:, comments:)
     @group = group
