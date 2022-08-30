@@ -2,12 +2,13 @@
 
 class Groups::ListItemComponent < ApplicationComponent
 
-  def initialize(group:)
+  def initialize(group:, user:)
     @group = group
+    @user = user
   end
 
   def show_join_request?
-    @group.owner.id != helpers.current_user.id && !@group.member_exist?(user: helpers.current_user)
+    @group.owner.id != @user.id && !@group.member_exist?(user: @user)
   end
 
   def join_request_text
@@ -20,6 +21,6 @@ class Groups::ListItemComponent < ApplicationComponent
   end
 
   def join_request_status
-    @group.owner.id != helpers.current_user.id ? @group.get_member(user: helpers.current_user)&.status : "OWNER"
+    @group.owner.id != @user.id ? @group.get_member(user: @user)&.status : "OWNER"
   end
 end

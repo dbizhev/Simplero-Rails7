@@ -24,4 +24,10 @@ class Group < ApplicationRecord
 
     owner.id == user.id
   end
+
+  def owner_or_valid_member?(user: nil)
+    return false if user.nil?
+
+    owner_is?(user: user) || members.where(user_id: user.id, status: [Members::Status::ACCEPTED, Members::Status::OWNER]).first
+  end
 end

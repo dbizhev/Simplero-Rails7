@@ -1,1 +1,1 @@
-<%= turbo_stream.update @group, (render Groups::ListItemComponent.new(group: @group)) %>
+<%= turbo_stream.update @group, (render Groups::ListItemComponent.new(group: @group, user: current_user)) %>

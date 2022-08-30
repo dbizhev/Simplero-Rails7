@@ -1,9 +1,9 @@
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
   <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-    <div id="groups_list_items_body">
-    <% @groups.each do |group| %>
-      <%= render Groups::ListItemComponent.new(group: group) %>
+    <%= turbo_frame_tag "#{helpers.current_user.id}_groups_list_items_body" do %>
+      <% @groups.each do |group| %>
+        <%= render Groups::ListItemComponent.new(group: group, user: helpers.current_user) %>
+      <% end %>
     <% end %>
-    </div>
   </div>
 </div>

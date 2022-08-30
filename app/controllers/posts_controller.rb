@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
+    return redirect_back fallback_location: group_posts_path, alert: "You're not member of this group!" unless @group.owner_or_valid_member?(user: current_user)
+
     @members = @group.members.includes(:user).where(status: Members::Status::ACCEPTED)
     @pending_members = @group.members.includes(:user).where(status: Members::Status::PENDING)
     @posts = @group.posts.includes(:member)

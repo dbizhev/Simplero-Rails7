@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
       @member = @group.members.find_or_initialize_by(user_id: current_user.id)
       @member.status = Members::Status::OWNER
       @member.save
-      Turbo::StreamsChannel.broadcast_prepend_to "groups_list_items_body", html: render_to_string(Groups::ListItemComponent.new(group: @group)), target: "groups_list_items_body"
+      NewGroupStreamJob.perform_later(@group.id, current_user.id)
 
       render turbo_stream: [
         turbo_stream.update('turbo_messages', render_to_string(Shared::TurboMessageComponent.new(notice: "Group created successfully"))),
