@@ -14,12 +14,12 @@
 <div class="container mx-auto mt-4">
   <%= turbo_frame_tag "turbo_messages" %>
   <% if notice.present? %>
-    <div data-controller="alert" class="mt-1 mb-1 p-4 text-green-700 border rounded border-green-900/10 bg-green-50" role="alert">
+    <div data-controller="alert" class="flex justify-center mt-1 mb-1 p-4 text-green-700 border rounded border-green-900/10 bg-green-50" role="alert">
       <strong class="text-sm font-medium"> <%= notice %> </strong>
     </div>
   <% end %>
   <% if alert.present? %>
-    <div data-controller="alert" class="mt-1 mb-1 p-4 text-red-700 border rounded border-red-900/10 bg-red-50" role="alert">
+    <div data-controller="alert" class="flex justify-center mt-1 mb-1 p-4 text-red-700 border rounded border-red-900/10 bg-red-50" role="alert">
       <strong class="text-sm font-medium"> <%= alert %> </strong>
     </div>
   <% end %>

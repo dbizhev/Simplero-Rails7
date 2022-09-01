@@ -1,10 +1,10 @@
 <% if @notice_msg.present? %>
-  <div data-controller="alert" class="mt-1 mb-1 p-4 text-green-700 border rounded border-green-900/10 bg-green-50" role="alert">
+  <div data-controller="alert" class="flex justify-center mt-1 mb-1 p-4 text-green-700 border rounded border-green-900/10 bg-green-50" role="alert">
     <strong class="text-sm font-medium"> <%= @notice_msg %> </strong>
   </div>
 <% end %>
 <% if @alert_msg.present? %>
-  <div data-controller="alert" class="mt-1 mb-1 p-4 text-red-700 border rounded border-red-900/10 bg-red-50" role="alert">
+  <div data-controller="alert" class="flex justify-center mt-1 mb-1 p-4 text-red-700 border rounded border-red-900/10 bg-red-50" role="alert">
     <strong class="text-sm font-medium"> <%= @alert_msg %> </strong>
   </div>
 <% end %>

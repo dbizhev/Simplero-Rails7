@@ -8,7 +8,7 @@
     <%= render 'users/shared/error_messages' %>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false }, class: "p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl" }) do |f| %>
-    <p class="text-lg font-medium">Sign up to your account</p>
+    <p class="text-lg font-medium text-error">Sign up to your account</p>
     <div>
       <%= f.label :name, class: "text-sm font-medium" %><br/>
       <%= f.text_field :name, autofocus: true, autocomplete: false, required: true, class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm" %>
